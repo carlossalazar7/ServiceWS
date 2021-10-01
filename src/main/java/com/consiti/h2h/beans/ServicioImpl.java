@@ -7,11 +7,12 @@ package com.consiti.h2h.beans;
  */
 import com.consiti.h2h.beans.ConsultaDetalleLote.TRANSACTIONS;
 import com.consiti.h2h.beans.ConsultaDetalleLote.TRANSACTIONS.TRANSACTION;
+import com.consiti.h2h.beans.Header.Authentication;
+import com.consiti.h2h.beans.Header.Region;
 import com.consiti.h2h.beans.consultaLotesCliente.BATCHES;
 import com.consiti.h2h.beans.consultaLotesCliente.BATCHES.BATCH;
 import java.math.BigInteger;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
@@ -26,8 +27,62 @@ import javax.xml.ws.Holder;
 public class ServicioImpl implements ServicioWS {
 
     @Override
-    public void ConsultaDetalleLote(String CUSTOMER_ID, String QUERY_TYPE, String QUERY_VALUE, Holder<ConsultaDetalleLote> consultaDetalleLote) {
+    public void consultaLotesCliente(Header.Authentication Authentication, Header.Region Region, Holder<String> successIndicator, BigInteger CUSTOMER_ID, Date BEGIN_DATE, Date END_DATE, Holder<com.consiti.h2h.beans.consultaLotesCliente> consultaLotesCliente) {
 
+        successIndicator.value = "Success";
+        Header header = new Header();
+        Authentication aut = new Header.Authentication();
+        aut.setPassword("123");
+        aut.setUserName("Prueba123");
+        
+        Region reg = new Region();
+        reg.setSourceBank("HN01");
+        
+        header.setAuthentication(aut);
+        header.setRegion(reg);
+        
+        consultaLotesCliente consulta = new consultaLotesCliente();
+        BATCHES batches = new BATCHES();
+        BATCH batch = new BATCH();
+
+        batch.setSTATUS("activo");
+        batch.setCUSTOMERBATCHID(CUSTOMER_ID);
+        batch.setBANKBATCHID(BigInteger.valueOf(1234567));
+        batch.setTYPE(BigInteger.valueOf(8935));
+        batch.setUPLOAD_DATE(END_DATE);
+        batch.setAPLICATION_DATE(END_DATE);
+        batch.setNUMBER_OF_TRANSACTIONS(BigInteger.valueOf(20));
+        batch.setNUMBER_OF_TRANSACTIONS_SUCCESS(BigInteger.valueOf(20));
+        batch.setNUMBER_OF_TRANSACTIONS_SUCCESS(BigInteger.valueOf(0));
+        batch.setTOTAL_AMOUNT(500.00);
+        batch.setTOTAL_AMOUNT_ERROR(0.00);
+
+        batches.setBATCH(batch);
+
+        consulta.setGLOBALID(BigInteger.valueOf(1234567));
+        consulta.setCUSTOMERID(CUSTOMER_ID);
+        consulta.setBATCHES(batches);
+        consulta.setBEGIN_DATE(BEGIN_DATE);
+        consulta.setEND_DATE(END_DATE);
+
+        consultaLotesCliente.value = consulta;
+    }
+
+    @Override
+    public void ConsultaDetalleLote(Header.Authentication Authentication, Header.Region Region, Holder<String> successIndicator, String CUSTOMER_ID, String QUERY_TYPE, String QUERY_VALUE, Holder<com.consiti.h2h.beans.ConsultaDetalleLote> consultaDetalleLote) {
+        
+        successIndicator.value = "Success";
+        Header header = new Header();
+        Authentication aut = new Header.Authentication();
+        aut.setPassword("123");
+        aut.setUserName("Prueba123");
+        
+        Region reg = new Region();
+        reg.setSourceBank("HN01");
+        
+        header.setAuthentication(aut);
+        header.setRegion(reg);
+        
         ConsultaDetalleLote consulta = new ConsultaDetalleLote();
         TRANSACTIONS transactions = new TRANSACTIONS();
         TRANSACTION transaction = new TRANSACTION();
@@ -57,7 +112,20 @@ public class ServicioImpl implements ServicioWS {
     }
 
     @Override
-    public void pagosMasivos(PagosMasivos pagosMasivos, Holder<pagosMasivosResponse> pagos) {
+    public void pagosMasivos(Header.Authentication Authentication, Header.Region Region, Holder<String> successIndicator, PagosMasivos pagosMasivos, Holder<pagosMasivosResponse> pagos) {
+        
+        successIndicator.value = "Success";
+        Header header = new Header();
+        Authentication aut = new Header.Authentication();
+        aut.setPassword("123");
+        aut.setUserName("Prueba123");
+        
+        Region reg = new Region();
+        reg.setSourceBank("HN01");
+        
+        header.setAuthentication(aut);
+        header.setRegion(reg);
+        
         pagosMasivosResponse pagosM = new pagosMasivosResponse();
         pagosMasivosResponse.BATCHES batches = new pagosMasivosResponse.BATCHES();
         pagosMasivosResponse.BATCHES.BATCH batch = new pagosMasivosResponse.BATCHES.BATCH();
@@ -72,37 +140,6 @@ public class ServicioImpl implements ServicioWS {
         pagosM.setCUSTOMERID(BigInteger.valueOf(84561));
         pagosM.setBATCHES(batches);
         pagos.value = pagosM;
-    }
-
-    @Override
-    public void consultaLotesCliente(Header.Authentication Authentication, Header.Region Region, Holder<String> successIndicator, BigInteger CUSTOMER_ID, Date BEGIN_DATE, Date END_DATE, Holder<com.consiti.h2h.beans.consultaLotesCliente> consultaLotesCliente) {
-
-        successIndicator.value = "Success";
-        consultaLotesCliente consulta = new consultaLotesCliente();
-        BATCHES batches = new BATCHES();
-        BATCH batch = new BATCH();
-
-        batch.setSTATUS("activo");
-        batch.setCUSTOMERBATCHID(CUSTOMER_ID);
-        batch.setBANKBATCHID(BigInteger.valueOf(1234567));
-        batch.setTYPE(BigInteger.valueOf(8935));
-        batch.setUPLOAD_DATE(END_DATE);
-        batch.setAPLICATION_DATE(END_DATE);
-        batch.setNUMBER_OF_TRANSACTIONS(BigInteger.valueOf(20));
-        batch.setNUMBER_OF_TRANSACTIONS_SUCCESS(BigInteger.valueOf(20));
-        batch.setNUMBER_OF_TRANSACTIONS_SUCCESS(BigInteger.valueOf(0));
-        batch.setTOTAL_AMOUNT(500.00);
-        batch.setTOTAL_AMOUNT_ERROR(0.00);
-
-        batches.setBATCH(batch);
-
-        consulta.setGLOBALID(BigInteger.valueOf(1234567));
-        consulta.setCUSTOMERID(CUSTOMER_ID);
-        consulta.setBATCHES(batches);
-        consulta.setBEGIN_DATE(BEGIN_DATE);
-        consulta.setEND_DATE(END_DATE);
-
-        consultaLotesCliente.value = consulta;
     }
 
 }
