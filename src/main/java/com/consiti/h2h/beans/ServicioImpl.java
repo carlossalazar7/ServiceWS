@@ -75,7 +75,7 @@ public class ServicioImpl implements ServicioWS {
     }
 
     @Override
-    public void consultaLotesCliente(Holder<ArrayList> Authentication, Holder<ArrayList> Region, Holder<String> successIndicator, BigInteger CUSTOMER_ID, Date BEGIN_DATE, Date END_DATE, Holder<com.consiti.h2h.beans.consultaLotesCliente> consultaLotesCliente) {
+    public void consultaLotesCliente(Header.Authentication Authentication, Header.Region Region, Holder<String> successIndicator, BigInteger CUSTOMER_ID, Date BEGIN_DATE, Date END_DATE, Holder<com.consiti.h2h.beans.consultaLotesCliente> consultaLotesCliente) {
 
         successIndicator.value = "Success";
         consultaLotesCliente consulta = new consultaLotesCliente();
