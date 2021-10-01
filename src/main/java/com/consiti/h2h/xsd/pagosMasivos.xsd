@@ -1,0 +1,56 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="pagosMasivos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:integer" name="GLOBAL_ID"/>
+                <xs:element type="xs:integer" name="CUSTOMER_ID"/>
+                <xs:element type="xs:string" name="USERNAME"/>
+                <xs:element name="BATCHES">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="BATCH">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:integer" name="CUSTOMER_BATCH_ID"/>
+                                        <xs:element type="xs:integer" name="TYPE"/>
+                                        <xs:element name="DATA_STRUCTURE">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="VALIDATIONS">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element type="xs:string" name="DEBIT_ACCT_BALANCE"/>
+                                                                <xs:element type="xs:string" name="DEBIT_ACCT_STATUS"/>
+                                                                <xs:element type="xs:integer" name="NUMBER_OF_TRANSACTIONS"/>
+                                                                <xs:element type="xs:integer" name="TOTAL_AMOUNT"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="FIELDS">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element maxOccurs="unbounded" type="xs:string" name="FIELD"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element type="xs:string" name="DELIMITER"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="TRANSACTIONS">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element maxOccurs="unbounded" type="xs:string" name="TRANSACTION"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

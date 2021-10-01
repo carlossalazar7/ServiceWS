@@ -1,0 +1,37 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="consultaDetalleLote">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="CUSTOMER_ID"/>
+                <xs:element type="xs:integer" name="BANK_BATCH_ID"/>
+                <xs:element type="xs:string" name="BATCH_TYPE"/>
+                <xs:element type="xs:date" name="UPLOAD_DATE"/>
+                <xs:element type="xs:date" name="APPLICATION_DATE"/>
+                <xs:element type="xs:integer" name="NUMBER_OF_TRANSACTIONS"/>
+                <xs:element type="xs:integer" name="TOTAL_AMOUNT"/>
+                <xs:element type="xs:string" name="STATUS"/>
+                <xs:element name="TRANSACTIONS">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="TRANSACTION">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:integer" name="ID"/>
+                                        <xs:element type="xs:string" name="TXN_REFERENCE"/>
+                                        <xs:element type="xs:string" name="DEBIT_ACCOUNT"/>
+                                        <xs:element type="xs:string" name="CREDIT_ACCOUNT"/>
+                                        <xs:element type="xs:integer" name="AMOUNT"/>
+                                        <xs:element type="xs:string" name="DOCUMENT_NUMBER"/>
+                                        <xs:element type="xs:string" name="STATUS"/>
+                                        <xs:element type="xs:integer" name="ERROR_CODE"/>
+                                        <xs:element type="xs:string" name="ERROR_MESSAGE"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

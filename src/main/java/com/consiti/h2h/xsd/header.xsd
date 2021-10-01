@@ -1,0 +1,29 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.javatechie.com/spring/soap/api/loanEligibility"
+            xmlns:tns="http://www.javatechie.com/spring/soap/api/loanEligibility"
+            elementFormDefault="qualified">
+    <xsd:element name="RequestHeader">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Authentication">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element type="xsd:string" name="UserName"/>
+                            <xsd:element type="xsd:string" name="Password"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="Region">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element type="xsd:string" name="SourceBank"/>
+                            <xsd:element type="xsd:string" name="DestinationBank"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
