@@ -11,6 +11,7 @@ import com.consiti.h2h.beans.consultaLotesCliente.BATCHES;
 import com.consiti.h2h.beans.consultaLotesCliente.BATCHES.BATCH;
 import java.math.BigInteger;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
@@ -23,37 +24,6 @@ import javax.xml.ws.Holder;
 @Stateless
 @WebService(endpointInterface = "com.consiti.h2h.beans.ServicioWS")
 public class ServicioImpl implements ServicioWS {
-
-    @Override
-    public void consultaLotesCliente(BigInteger CUSTOMER_ID, Date BEGIN_DATE, Date END_DATE, Holder<consultaLotesCliente> consultaLotesCliente) {
-
-        consultaLotesCliente consulta = new consultaLotesCliente();
-        BATCHES batches = new BATCHES();
-        BATCH batch = new BATCH();
-
-        batch.setSTATUS("activo");
-        batch.setCUSTOMERBATCHID(CUSTOMER_ID);
-        batch.setBANKBATCHID(BigInteger.valueOf(1234567));
-        batch.setTYPE(BigInteger.valueOf(8935));
-        batch.setUPLOAD_DATE(END_DATE);
-        batch.setAPLICATION_DATE(END_DATE);
-        batch.setNUMBER_OF_TRANSACTIONS(BigInteger.valueOf(20));
-        batch.setNUMBER_OF_TRANSACTIONS_SUCCESS(BigInteger.valueOf(20));
-        batch.setNUMBER_OF_TRANSACTIONS_SUCCESS(BigInteger.valueOf(0));
-        batch.setTOTAL_AMOUNT(500.00);
-        batch.setTOTAL_AMOUNT_ERROR(0.00);
-
-        batches.setBATCH(batch);
-
-        consulta.setGLOBALID(BigInteger.valueOf(1234567));
-        consulta.setCUSTOMERID(CUSTOMER_ID);
-        consulta.setBATCHES(batches);
-        consulta.setBEGIN_DATE(BEGIN_DATE);
-        consulta.setEND_DATE(END_DATE);
-
-        consultaLotesCliente.value = consulta;
-
-    }
 
     @Override
     public void ConsultaDetalleLote(String CUSTOMER_ID, String QUERY_TYPE, String QUERY_VALUE, Holder<ConsultaDetalleLote> consultaDetalleLote) {
@@ -103,4 +73,36 @@ public class ServicioImpl implements ServicioWS {
         pagosM.setBATCHES(batches);
         pagos.value = pagosM;
     }
+
+    @Override
+    public void consultaLotesCliente(Holder<ArrayList> Authentication, Holder<ArrayList> Region, Holder<String> successIndicator, BigInteger CUSTOMER_ID, Date BEGIN_DATE, Date END_DATE, Holder<com.consiti.h2h.beans.consultaLotesCliente> consultaLotesCliente) {
+
+        successIndicator.value = "Success";
+        consultaLotesCliente consulta = new consultaLotesCliente();
+        BATCHES batches = new BATCHES();
+        BATCH batch = new BATCH();
+
+        batch.setSTATUS("activo");
+        batch.setCUSTOMERBATCHID(CUSTOMER_ID);
+        batch.setBANKBATCHID(BigInteger.valueOf(1234567));
+        batch.setTYPE(BigInteger.valueOf(8935));
+        batch.setUPLOAD_DATE(END_DATE);
+        batch.setAPLICATION_DATE(END_DATE);
+        batch.setNUMBER_OF_TRANSACTIONS(BigInteger.valueOf(20));
+        batch.setNUMBER_OF_TRANSACTIONS_SUCCESS(BigInteger.valueOf(20));
+        batch.setNUMBER_OF_TRANSACTIONS_SUCCESS(BigInteger.valueOf(0));
+        batch.setTOTAL_AMOUNT(500.00);
+        batch.setTOTAL_AMOUNT_ERROR(0.00);
+
+        batches.setBATCH(batch);
+
+        consulta.setGLOBALID(BigInteger.valueOf(1234567));
+        consulta.setCUSTOMERID(CUSTOMER_ID);
+        consulta.setBATCHES(batches);
+        consulta.setBEGIN_DATE(BEGIN_DATE);
+        consulta.setEND_DATE(END_DATE);
+
+        consultaLotesCliente.value = consulta;
+    }
+
 }

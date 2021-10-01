@@ -6,6 +6,7 @@ package com.consiti.h2h.beans;
  * and open the template in the editor.
  */
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -21,6 +22,9 @@ public interface ServicioWS {
 
     @WebMethod
     public void consultaLotesCliente(
+            @WebParam(name ="Authentication", header = true, mode = WebParam.Mode.IN) Holder<ArrayList> Authentication,
+            @WebParam(name ="Region", header = true, mode = WebParam.Mode.IN) Holder<ArrayList> Region,
+            @WebParam(name ="successIndicator", header = true, mode = WebParam.Mode.OUT) Holder<String> successIndicator,
             @WebParam(name = "CUSTOMER_ID", mode = WebParam.Mode.IN) BigInteger CUSTOMER_ID,
             @WebParam(name = "BEGIN_DATE", mode = WebParam.Mode.IN) Date BEGIN_DATE,
             @WebParam(name = "END_DATE", mode = WebParam.Mode.IN) Date END_DATE,
