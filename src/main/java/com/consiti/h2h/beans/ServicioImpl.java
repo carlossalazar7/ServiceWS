@@ -29,10 +29,10 @@ public class ServicioImpl implements ServicioWS {
     //utils methods
     Utils use = new Utils();
 
-
     @Override
     public void consultaLotesCliente(Authentication Authentication, Region Region, Holder<String> successIndicator, Holder<String> transactionId, Holder<String> messageId, BigInteger CUSTOMER_ID, Date BEGIN_DATE, Date END_DATE, Holder<com.consiti.h2h.beans.consultaLotesCliente> consultaLotesCliente) {
-        
+
+        System.out.println(BEGIN_DATE.toString());
         transactionId.value = "1";
         messageId.value = "message prueba";
         successIndicator.value = use.getRandomStatus();
@@ -55,8 +55,8 @@ public class ServicioImpl implements ServicioWS {
         batch.setCUSTOMERBATCHID(CUSTOMER_ID);
         batch.setBANKBATCHID(BigInteger.valueOf(1234567));
         batch.setTYPE(BigInteger.valueOf(8935));
-        batch.setUPLOAD_DATE(use.formatDate(END_DATE));
-        batch.setAPLICATION_DATE(use.formatDate(END_DATE));
+        batch.setUPLOAD_DATE(END_DATE);
+        batch.setAPLICATION_DATE(END_DATE);
         batch.setNUMBER_OF_TRANSACTIONS(BigInteger.valueOf(20));
         batch.setNUMBER_OF_TRANSACTIONS_SUCCESS(BigInteger.valueOf(20));
         batch.setNUMBER_OF_TRANSACTIONS_SUCCESS(BigInteger.valueOf(0));
@@ -76,7 +76,7 @@ public class ServicioImpl implements ServicioWS {
 
     @Override
     public void ConsultaDetalleLote(Authentication Authentication, Region Region, Holder<String> successIndicator, Holder<String> transactionId, Holder<String> messageId, String CUSTOMER_ID, String QUERY_TYPE, String QUERY_VALUE, Holder<com.consiti.h2h.beans.ConsultaDetalleLote> consultaDetalleLote) {
-        
+
         //--------------------------
         transactionId.value = "1";
         messageId.value = "message prueba";
@@ -122,7 +122,7 @@ public class ServicioImpl implements ServicioWS {
 
     @Override
     public void pagosMasivos(Authentication Authentication, Region Region, Holder<String> successIndicator, Holder<String> transactionId, Holder<String> messageId, PagosMasivos pagosMasivos, Holder<pagosMasivosResponse> pagos) {
-        
+
         transactionId.value = "1";
         messageId.value = "message prueba";
         successIndicator.value = use.getRandomStatus();

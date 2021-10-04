@@ -6,7 +6,6 @@ package com.consiti.h2h.beans;
  * and open the template in the editor.
  */
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Date;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
