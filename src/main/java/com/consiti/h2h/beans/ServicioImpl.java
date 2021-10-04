@@ -29,9 +29,12 @@ public class ServicioImpl implements ServicioWS {
     //utils methods
     Utils use = new Utils();
 
-    @Override
-    public void consultaLotesCliente(Header.Authentication Authentication, Header.Region Region, Holder<String> successIndicator, BigInteger CUSTOMER_ID, Date BEGIN_DATE, Date END_DATE, Holder<com.consiti.h2h.beans.consultaLotesCliente> consultaLotesCliente) {
 
+    @Override
+    public void consultaLotesCliente(Authentication Authentication, Region Region, Holder<String> successIndicator, Holder<String> transactionId, Holder<String> messageId, BigInteger CUSTOMER_ID, Date BEGIN_DATE, Date END_DATE, Holder<com.consiti.h2h.beans.consultaLotesCliente> consultaLotesCliente) {
+        
+        transactionId.value = "1";
+        messageId.value = "message prueba";
         successIndicator.value = use.getRandomStatus();
         Header header = new Header();
         Authentication aut = new Header.Authentication();
@@ -72,9 +75,11 @@ public class ServicioImpl implements ServicioWS {
     }
 
     @Override
-    public void ConsultaDetalleLote(Header.Authentication Authentication, Header.Region Region, Holder<String> successIndicator, String CUSTOMER_ID, String QUERY_TYPE, String QUERY_VALUE, Holder<com.consiti.h2h.beans.ConsultaDetalleLote> consultaDetalleLote) {
-
+    public void ConsultaDetalleLote(Authentication Authentication, Region Region, Holder<String> successIndicator, Holder<String> transactionId, Holder<String> messageId, String CUSTOMER_ID, String QUERY_TYPE, String QUERY_VALUE, Holder<com.consiti.h2h.beans.ConsultaDetalleLote> consultaDetalleLote) {
+        
         //--------------------------
+        transactionId.value = "1";
+        messageId.value = "message prueba";
         successIndicator.value = use.getRandomStatus();
         Header header = new Header();
         Authentication aut = new Header.Authentication();
@@ -116,8 +121,10 @@ public class ServicioImpl implements ServicioWS {
     }
 
     @Override
-    public void pagosMasivos(Header.Authentication Authentication, Header.Region Region, Holder<String> successIndicator, PagosMasivos pagosMasivos, Holder<pagosMasivosResponse> pagos) {
-
+    public void pagosMasivos(Authentication Authentication, Region Region, Holder<String> successIndicator, Holder<String> transactionId, Holder<String> messageId, PagosMasivos pagosMasivos, Holder<pagosMasivosResponse> pagos) {
+        
+        transactionId.value = "1";
+        messageId.value = "message prueba";
         successIndicator.value = use.getRandomStatus();
         Header header = new Header();
         Authentication aut = new Header.Authentication();
@@ -145,5 +152,4 @@ public class ServicioImpl implements ServicioWS {
         pagosM.setBATCHES(batches);
         pagos.value = pagosM;
     }
-
 }

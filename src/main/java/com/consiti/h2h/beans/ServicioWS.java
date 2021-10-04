@@ -25,6 +25,8 @@ public interface ServicioWS {
             @WebParam(name ="Authentication", header = true, mode = WebParam.Mode.IN) Header.Authentication Authentication,
             @WebParam(name ="Region", header = true, mode = WebParam.Mode.IN) Header.Region Region,
             @WebParam(name ="successIndicator", header = true, mode = WebParam.Mode.OUT) Holder<String> successIndicator,
+            @WebParam(name ="transactionId", header = true, mode = WebParam.Mode.OUT) Holder<String> transactionId,
+            @WebParam(name ="messageId", header = true, mode = WebParam.Mode.OUT) Holder<String> messageId,
             @WebParam(name = "CUSTOMER_ID", mode = WebParam.Mode.IN) BigInteger CUSTOMER_ID,
             @WebParam(name = "BEGIN_DATE", mode = WebParam.Mode.IN) Date BEGIN_DATE,
             @WebParam(name = "END_DATE", mode = WebParam.Mode.IN) Date END_DATE,
@@ -35,6 +37,8 @@ public interface ServicioWS {
             @WebParam(name ="Authentication", header = true, mode = WebParam.Mode.IN) Header.Authentication Authentication,
             @WebParam(name ="Region", header = true, mode = WebParam.Mode.IN) Header.Region Region,
             @WebParam(name ="successIndicator", header = true, mode = WebParam.Mode.OUT) Holder<String> successIndicator,
+            @WebParam(name ="transactionId", header = true, mode = WebParam.Mode.OUT) Holder<String> transactionId,
+            @WebParam(name ="messageId", header = true, mode = WebParam.Mode.OUT) Holder<String> messageId,
             @WebParam(name = "CUSTOMER_ID", mode = WebParam.Mode.IN) String CUSTOMER_ID,
             @WebParam(name = "QUERY_TYPE", mode = WebParam.Mode.IN) String QUERY_TYPE,
             @WebParam(name = "QUERY_VALUE", mode = WebParam.Mode.IN) String QUERY_VALUE,
@@ -45,6 +49,8 @@ public interface ServicioWS {
             @WebParam(name ="Authentication", header = true, mode = WebParam.Mode.IN) Header.Authentication Authentication,
             @WebParam(name ="Region", header = true, mode = WebParam.Mode.IN) Header.Region Region,
             @WebParam(name ="successIndicator", header = true, mode = WebParam.Mode.OUT) Holder<String> successIndicator,
+            @WebParam(name ="transactionId", header = true, mode = WebParam.Mode.OUT) Holder<String> transactionId,
+            @WebParam(name ="messageId", header = true, mode = WebParam.Mode.OUT) Holder<String> messageId,
             @WebParam(name = "pagos", mode = WebParam.Mode.IN) PagosMasivos pagosMasivos,
             @WebParam(name = "PagosMasivos", mode = WebParam.Mode.OUT) Holder<pagosMasivosResponse> pagos
     );
