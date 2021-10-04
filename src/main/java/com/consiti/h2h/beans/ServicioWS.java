@@ -17,7 +17,7 @@ import javax.xml.ws.Holder;
  *
  * @author carlo
  */
-@WebService
+@WebService()
 public interface ServicioWS {
 
     @WebMethod
